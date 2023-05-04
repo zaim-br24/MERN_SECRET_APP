@@ -1,6 +1,6 @@
 import Users from '../Models/User.js'
 import { StatusCodes } from 'http-status-codes'
-import {BadRequistError} from '../Errors/index.js'
+import {BadRequistError, UnauthenticatedError} from '../Errors/index.js'
 
 
 
@@ -26,7 +26,7 @@ const register = async (req , res, next)=> {
     //calling the createJWT coming from User schema to create a token (unique key)
    const token =  user.createJWT()
    //returning the user object without the PASSWORD
-    res.status(StatusCodes.OK).json({user:{
+    res.status(StatusCodes.CREATED).json({user:{
         name:user.name,
         email:user.email,
         lastname:user.lastName
@@ -34,8 +34,36 @@ const register = async (req , res, next)=> {
     
     
 }
-const login = (req , res)=> {
-    res.send('login user')
+const login = async (req , res)=> {
+    const {email, password} = req.body;
+
+    if(!email || !password){
+        throw new BadRequistError("Please provide all values.")
+    }
+   
+    const user = await Users.findOne({email}).select('+password')
+
+    if(!user){
+        return UnauthenticatedError('invalid values!')
+    }
+
+    const isPasswordCorrect = await user.comparePassword(password)
+
+    if(!isPasswordCorrect){
+        return UnauthenticatedError('invalid credentials!')
+
+    }
+    
+    //calling the createJWT coming from User schema to create a token (unique key)
+   const token =  user.createJWT()
+   //returning the user object without the PASSWORD
+    res.status(StatusCodes.OK).json({user:{
+        name:user.name,
+        email:user.email,
+        lastname:user.lastName
+    }, token, location:user.location,})               
+    
+    
 }
 
 const updateUser = (req , res)=> { 
