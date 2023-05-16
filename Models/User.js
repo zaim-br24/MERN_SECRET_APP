@@ -29,6 +29,9 @@ const UserSchema = new mongoose.Schema({
         maxlength:30,
         select: false  // the SELET key === false means can't be accessed if you return it from the DB using 'find' or 'findOne'
     },
+    posts:[
+        
+    ],
     lastName:{
         type: String,
         minlength: 3,

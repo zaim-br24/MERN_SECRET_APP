@@ -12,6 +12,7 @@ import connectDB from "./db/connect.js";
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 import authRouter from "./Router/authRouter.js";
+import postRouter from './Router/postRouter.js'
 
 
 app.use(express.json())
@@ -25,6 +26,8 @@ app.get('/', (req, res)=>{
 
 //routes
 app.use("/api/v1/auth", authRouter );
+app.use("/api/v1/post", postRouter );
+
 
 
 app.use(notFoundMiddleware )
