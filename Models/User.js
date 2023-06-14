@@ -44,7 +44,8 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         default: "Fes"
         
-    }
+    },
+    tokens: [{type: Object}]
 })
 
 

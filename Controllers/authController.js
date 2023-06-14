@@ -1,6 +1,7 @@
 import Users from '../Models/User.js'
 import { StatusCodes } from 'http-status-codes'
 import {BadRequistError, UnauthenticatedError} from '../Errors/index.js'
+// import User from '../Models/User.js';
 
 
 
@@ -56,6 +57,20 @@ const login = async (req , res)=> {
     
     //calling the createJWT coming from User schema to create a token (unique key)
    const token =  user.createJWT()
+
+    //AND and UPDATE TOKENS FROM DATABASE
+//    let oldTokens = user.tokens || [];
+//    if(oldTokens.length){
+//     oldTokens= oldTokens.filter(t => {
+//        const timeDiff = (Date.now() - parsInt(t.signedAt) )/ 1000
+       
+//        if(timeDiff <86400){
+//         return t
+//        }
+//     })
+//    }
+
+//    await Users.findByIdAndUpdate(user._id, {tokens:[...oldTokens, {token, signedAt: Date.now().toString()}]})
    //returning the user object without the PASSWORD
     res.status(StatusCodes.OK).json({user:{
         name:user.name,
@@ -66,6 +81,7 @@ const login = async (req , res)=> {
     
 }
 
+
 const updateUser = (req , res)=> { 
     res.send('updateUser')
 }
@@ -73,5 +89,5 @@ const updateUser = (req , res)=> {
 export {
     register,
     login,
-    updateUser
+    updateUser,
 }
