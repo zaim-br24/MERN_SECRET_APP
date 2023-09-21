@@ -1,0 +1,61 @@
+{
+  "name": "backdoor",
+  "version": "1.0.0",
+  "description": "Backdoor",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "20.x",
+    "npm": "7.x"
+  },
+  "scripts": {
+    "install-server": "npm install",
+    "install-dependencies": " npm run install-client && npm run install-server ",
+    "build-client": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build-client",
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
+    },
+  "keywords": [],
+  "author": "Zaim Ibrahim",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.405.0",
+    "@aws-sdk/s3-request-presigner": "^3.405.0",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "aws-sdk": "^2.1450.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "browserslist": "^4.21.7",
+    "caniuse-lite": "^1.0.30001489",
+    "canvas": "^2.11.2",
+    "child_process": "^1.0.2",
+    "cloudinary": "^1.40.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.0.1",
+    "ffprobe": "^1.1.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "helmet": "^7.0.0",
+    "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.10.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "prisma": "^5.2.0",
+    "remove": "^0.1.5",
+    "sharp": "^0.32.5",
+    "validator": "^13.9.0",
+    "xss-clean": "^0.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
