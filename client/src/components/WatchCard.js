@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom';
 
 export default function WatchCard({videoId,thumbnailUrl, title, publishedDate, views, avatar, postedBy}) {
   return (
-    <Wrapper class="card">
+    <Wrapper className="card">
       <Link to={`/watchs/${videoId}`}>
-        <div class="image">
+        <div className="image">
           <img src={thumbnailUrl} alt={title}/>
         </div>
-        <div class="content">
+        <div className="content">
             <a href="#">
-            <span class="title">
+            <span className="title">
               {title}
             </span>
             </a>
         <div className='publisher'>
-            <div class="avatar">
+            <div className="avatar">
               {avatar && <img src={avatar} alt='avatar' />}
             </div>
-            <a class="publisher-name">{postedBy} <span className='published-date'>{publishedDate} - </span> <span className='views'>{views} views</span> </a>
+            <p className="publisher-name">{postedBy} <span className='published-date'>{publishedDate} - </span> <span className='views'>{views} views</span> </p>
         </div>
         </div>
     </Link>

@@ -8,10 +8,10 @@ export default function ClipShotsCard({id}) {
   return (
     <Wrapper className='ClipShot-card'>
       <Link to={`/clipshot/${id}`}>
-            <div class="card-image"></div>
-            {/* <div class="category"> Illustration </div> */}
-            <div class="heading"> A heading that must span over two lines
-                <div class="author"> By <span class="name">Abi</span> 4 days ago   - <span>3.2K views</span></div>
+            <div className="card-image"></div>
+            {/* <div className="category"> Illustration </div> */}
+            <div className="heading"> A heading that must span over two lines
+                <div className="author"> By <span className="name">Abi</span> 4 days ago   - <span>3.2K views</span></div>
             </div>
       </Link>
     </Wrapper>

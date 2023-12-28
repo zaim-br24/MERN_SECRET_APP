@@ -3,7 +3,7 @@ import WatchCard from './WatchCard'
 import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 import moment from 'moment/moment';
-import {Loader} from './Loader'
+import Loader from './Loader'
 
 export default function WatchCards() {
   const { getAllVideos, videos, isLoading, videosPage, setPage, numOfVideosPages, totalVideos} = useAppContext();
@@ -14,7 +14,7 @@ useEffect(()=>{
 
   return (
     <Wrapper >
-      {isLoading && <loader/>}
+      {isLoading && <Loader/>}
      {
         videos.map((video, index) => (
           

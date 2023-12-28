@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export default function Input({type, name, value, label, handelChange, children, placeholder}) {
   return (
   <Wrapper>
-    <label for="password">{label}</label>
+    <label >{label}</label>
     <input type={type}  value={value} name={name} placeholder={placeholder}  onChange={handelChange}/>
     {
       children && <div className="forgot">
