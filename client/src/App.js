@@ -37,7 +37,7 @@ function App() {
               <Route path="redoos/:id" element={<RedoosSinglePage />} />
 
               </Route>
-              {!userRegistered && <Route path="/landing" element={<Landing />} />}
+              {<Route path="/landing" element={<Landing />} />}
             <Route path="/register" element={<Register/>} />
             <Route path="*" element={<Error/>} />
           </Routes>
